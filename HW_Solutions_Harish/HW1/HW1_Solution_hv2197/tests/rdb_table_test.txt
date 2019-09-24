@@ -1,0 +1,556 @@
+
+Table used for Testing Methods: People
+
+Testing Find by Template with matches in the data:
+Find By Template on people with template {'nameLast': 'Williams', 'birthState': 'NY'} :
+ [
+  {
+    "playerID": "willich01",
+    "nameFirst": "Charlie",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": "R"
+  },
+  {
+    "playerID": "willida05",
+    "nameFirst": "Dallas",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": "L"
+  },
+  {
+    "playerID": "willigu01",
+    "nameFirst": "Gus",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": ""
+  },
+  {
+    "playerID": "willima02",
+    "nameFirst": "Mark",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": "L"
+  },
+  {
+    "playerID": "willito02",
+    "nameFirst": "Todd",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": "R"
+  }
+] 
+
+
+Testing Find by Template without matches in the data:
+Find By Template on people with template {'nameLast': 'Luke', 'birthState': 'NJ'} :
+ None
+
+
+Testing Find by Key with matches in the data:
+Find By Primary Key on people with keys  ['willich01'] :
+ [
+  {
+    "playerID": "willich01",
+    "nameFirst": "Charlie",
+    "nameLast": "Williams",
+    "birthState": "NY",
+    "throws": "R"
+  }
+] 
+
+
+Testing Find by Key without matches in the data:
+Find By Primary Key on people with keys ['adam'] :
+ None
+
+
+Testing Valid Insert:
+0 record(s) found before insertion and 1 record(s) found after insertion. Insert into people was successful
+ {'playerID': 'TestPlayer', 'throws': 'R', 'birthYear': '1980'} 
+
+
+Testing Invalid (Duplicate Primary Key) Insert:
+Insertion of record {'playerID': 'willich01', 'throws': 'R', 'birthYear': '1980'} unsuccessful due to:
+ (1062, "Duplicate entry 'willich01' for key 'PRIMARY'")
+Test successful as the insert failed as it should
+
+Testing Insert without passing the primary key column:
+Insertion of record {'throws': 'R', 'birthYear': '1980'} unsuccessful due to:
+ (1364, "Field 'playerID' doesn't have a default value")
+Test successful as the insert failed as it should
+
+Testing Delete by Template with matches in the data:
+Record not found after deletion - Delete By Template on people with template
+ {'nameLast': 'Williams', 'birthState': 'NY'} 
+was successful with the deletion of 5 rows 
+
+
+Testing Delete by Template without matches in the data:
+No match found for deletion based on the given template
+ {'nameLast': 'Luke', 'birthState': 'NJ'} 
+Test Successful. 0 rows deleted
+
+Testing Delete by Key with matches in the data:
+Record not found after deletion - Delete By Key on people with keys
+ ['abadan01'] 
+was successful with the deletion of 1 rows 
+
+
+Testing Delete by Key without matches in the data:
+No match found for deletion based on the given key ['adam'] 
+Test Successful. 0 rows deleted
+
+Testing Update by Template with matches in the data:
+0 record(s) found before updates and 2 record(s) found after updates. Update on people with template
+ {'nameLast': 'Aaron', 'birthState': 'AL'} 
+and updates {'throws': 'both', 'bats': 'R'} was successful.
+ Data found based on updated values:
+ [
+  {
+    "playerID": "aaronha01",
+    "birthYear": "1934",
+    "birthMonth": "2",
+    "birthDay": "5",
+    "birthCountry": "USA",
+    "birthState": "AL",
+    "birthCity": "Mobile",
+    "deathYear": "",
+    "deathMonth": "",
+    "deathDay": "",
+    "deathCountry": "",
+    "deathState": "",
+    "deathCity": "",
+    "nameFirst": "Hank",
+    "nameLast": "Aaron",
+    "nameGiven": "Henry Louis",
+    "weight": "180",
+    "height": "72",
+    "bats": "R",
+    "throws": "both",
+    "debut": "1954-04-13",
+    "finalGame": "1976-10-03",
+    "retroID": "aaroh101",
+    "bbrefID": "aaronha01"
+  },
+  {
+    "playerID": "aaronto01",
+    "birthYear": "1939",
+    "birthMonth": "8",
+    "birthDay": "5",
+    "birthCountry": "USA",
+    "birthState": "AL",
+    "birthCity": "Mobile",
+    "deathYear": "1984",
+    "deathMonth": "8",
+    "deathDay": "16",
+    "deathCountry": "USA",
+    "deathState": "GA",
+    "deathCity": "Atlanta",
+    "nameFirst": "Tommie",
+    "nameLast": "Aaron",
+    "nameGiven": "Tommie Lee",
+    "weight": "190",
+    "height": "75",
+    "bats": "R",
+    "throws": "both",
+    "debut": "1962-04-10",
+    "finalGame": "1971-09-26",
+    "retroID": "aarot101",
+    "bbrefID": "aaronto01"
+  }
+]
+
+Testing Update by Template with matches in the data but with a duplicate value for primary key column:
+Update based on template {'playerID': 'zuverge01', 'birthState': 'MI'} 
+and values {'playerID': 'adcocjo01', 'throws': 'both', 'bats': 'R'} unsuccessful due to:
+ (1062, "Duplicate entry 'adcocjo01' for key 'PRIMARY'")
+Test successful as the update failed as it should
+
+Testing Update by Template without matches in the data:
+No match found for update based on the given template {'nameLast': 'Luke', 'birthState': 'NJ'} 
+Test Successful. 0 rows updated
+
+Testing Update by Key with matches in the data:
+2 record(s) found before updates and 3 record(s) found after updates. Update on people with keys ['allenbo02'] 
+and updates {'birthState': 'NY', 'bats': 'R', 'throws': 'R', 'birthYear': '1965', 'birthCity': 'Brooklyn'} was successful.
+ Data found based on updated values:
+ [
+  {
+    "playerID": "allenbo02",
+    "birthYear": "1965",
+    "birthMonth": "10",
+    "birthDay": "13",
+    "birthCountry": "USA",
+    "birthState": "NY",
+    "birthCity": "Brooklyn",
+    "deathYear": "1975",
+    "deathMonth": "12",
+    "deathDay": "18",
+    "deathCountry": "USA",
+    "deathState": "IL",
+    "deathCity": "Naperville",
+    "nameFirst": "Bob",
+    "nameLast": "Allen",
+    "nameGiven": "Robert",
+    "weight": "180",
+    "height": "70",
+    "bats": "R",
+    "throws": "R",
+    "debut": "1919-08-20",
+    "finalGame": "1919-09-09",
+    "retroID": "alleb104",
+    "bbrefID": "allenbo02"
+  },
+  {
+    "playerID": "dejesjo01",
+    "birthYear": "1965",
+    "birthMonth": "1",
+    "birthDay": "6",
+    "birthCountry": "USA",
+    "birthState": "NY",
+    "birthCity": "Brooklyn",
+    "deathYear": "",
+    "deathMonth": "",
+    "deathDay": "",
+    "deathCountry": "",
+    "deathState": "",
+    "deathCity": "",
+    "nameFirst": "Jose",
+    "nameLast": "de Jesus",
+    "nameGiven": "Jose Luis",
+    "weight": "175",
+    "height": "77",
+    "bats": "R",
+    "throws": "R",
+    "debut": "1988-09-09",
+    "finalGame": "1994-08-08",
+    "retroID": "dejej001",
+    "bbrefID": "dejesjo01"
+  },
+  {
+    "playerID": "rosenwa01",
+    "birthYear": "1965",
+    "birthMonth": "2",
+    "birthDay": "19",
+    "birthCountry": "USA",
+    "birthState": "NY",
+    "birthCity": "Brooklyn",
+    "deathYear": "",
+    "deathMonth": "",
+    "deathDay": "",
+    "deathCountry": "",
+    "deathState": "",
+    "deathCity": "",
+    "nameFirst": "Wayne",
+    "nameLast": "Rosenthal",
+    "nameGiven": "Wayne Scott",
+    "weight": "220",
+    "height": "77",
+    "bats": "R",
+    "throws": "R",
+    "debut": "1991-06-26",
+    "finalGame": "1992-04-14",
+    "retroID": "rosew001",
+    "bbrefID": "rosenwa01"
+  }
+]
+
+Testing Update by Key with matches in the data but with a duplicate value for primary key column:
+Update based on keys ['alyeabr01'] 
+and values {'playerID': 'ankenpa01', 'throws': 'L', 'bats': 'L'} unsuccessful due to:
+ (1062, "Duplicate entry 'ankenpa01' for key 'PRIMARY'")
+Test successful as the update failed as it should
+
+Testing Update by Key without matches in the data:
+No match found for update based on the given keys ['adam'] 
+Test Successful. 0 rows updated
+
+
+Table used for Testing Methods: Batting
+
+Testing Find by Template with matches in the data:
+Find By Template on batting with template {'teamID': 'BOS', 'yearID': '1960', 'stint': '2'} :
+ [
+  {
+    "playerID": "boonera01",
+    "teamID": "BOS",
+    "yearID": "1960",
+    "AB": "78",
+    "H": "16",
+    "HR": "1",
+    "RBI": "11"
+  },
+  {
+    "playerID": "hardyca01",
+    "teamID": "BOS",
+    "yearID": "1960",
+    "AB": "145",
+    "H": "34",
+    "HR": "2",
+    "RBI": "15"
+  },
+  {
+    "playerID": "nixonru01",
+    "teamID": "BOS",
+    "yearID": "1960",
+    "AB": "272",
+    "H": "81",
+    "HR": "5",
+    "RBI": "33"
+  },
+  {
+    "playerID": "repulri01",
+    "teamID": "BOS",
+    "yearID": "1960",
+    "AB": "136",
+    "H": "33",
+    "HR": "3",
+    "RBI": "20"
+  },
+  {
+    "playerID": "tasbywi01",
+    "teamID": "BOS",
+    "yearID": "1960",
+    "AB": "385",
+    "H": "108",
+    "HR": "7",
+    "RBI": "37"
+  }
+] 
+
+
+Testing Find by Template without matches in the data:
+Find By Template on batting with template {'teamID': 'TRO', 'yearID': '1970'} :
+ None
+
+
+Testing Find by Key with matches in the data:
+Find By Primary Key on batting with keys  ['aardsda01', '2004', 'SFN', '1'] :
+ [
+  {
+    "playerID": "aardsda01",
+    "teamID": "SFN",
+    "yearID": "2004",
+    "AB": "0",
+    "H": "0",
+    "HR": "0",
+    "RBI": "0"
+  }
+] 
+
+
+Testing Find by Key without matches in the data:
+Find By Primary Key on batting with keys ['aardsda01', '2010', 'BOS', '1'] :
+ None
+
+
+Testing Valid Insert:
+0 record(s) found before insertion and 1 record(s) found after insertion. Insert into batting was successful
+ {'playerID': 'TestPlayer', 'yearID': '2011', 'AB': '1', 'stint': '1', 'teamID': 'NYA'} 
+
+
+Testing Invalid (Duplicate Primary Key) Insert:
+Insertion of record {'playerID': 'abbotku01', 'yearID': '2001', 'teamID': 'ATL', 'stint': '1'} unsuccessful due to:
+ (1062, "Duplicate entry 'abbotku01-2001-1-ATL' for key 'PRIMARY'")
+Test successful as the insert failed as it should
+
+Testing Delete by Template with matches in the data:
+Record not found after deletion - Delete By Template on batting with template
+ {'teamID': 'TRO', 'yearID': '1872'} 
+was successful with the deletion of 12 rows 
+
+
+Testing Delete by Template without matches in the data:
+No match found for deletion based on the given template
+ {'playerID': 'aardsda01', 'yearID': '2010', 'teamID': 'BOS', 'stint': '1'} 
+Test Successful. 0 rows deleted
+
+Testing Delete by Key with matches in the data:
+Record not found after deletion - Delete By Key on batting with keys
+ ['aardsda01', '2004', 'SFN', '1'] 
+was successful with the deletion of 1 rows 
+
+
+Testing Delete by Key without matches in the data:
+No match found for deletion based on the given key ['aardsda01', '2010', 'BOS', '1'] 
+Test Successful. 0 rows deleted
+
+Testing Update by Template with matches in the data:
+0 record(s) found before updates and 2 record(s) found after updates. Update on batting with template
+ {'teamID': 'LAA', 'yearID': '2012', 'stint': '2'} 
+and updates {'R': '1', '2B': '2', 'H': '1', 'BB': '1'} was successful.
+ Data found based on updated values:
+ [
+  {
+    "playerID": "frierer01",
+    "yearID": "2012",
+    "stint": "2",
+    "teamID": "LAA",
+    "lgID": "AL",
+    "G": "56",
+    "AB": "0",
+    "R": "1",
+    "H": "1",
+    "2B": "2",
+    "3B": "0",
+    "HR": "0",
+    "RBI": "0",
+    "SB": "0",
+    "CS": "0",
+    "BB": "1",
+    "SO": "0",
+    "IBB": "0",
+    "HBP": "0",
+    "SH": "0",
+    "SF": "0",
+    "GIDP": "0"
+  },
+  {
+    "playerID": "greinza01",
+    "yearID": "2012",
+    "stint": "2",
+    "teamID": "LAA",
+    "lgID": "AL",
+    "G": "13",
+    "AB": "0",
+    "R": "1",
+    "H": "1",
+    "2B": "2",
+    "3B": "0",
+    "HR": "0",
+    "RBI": "0",
+    "SB": "0",
+    "CS": "0",
+    "BB": "1",
+    "SO": "0",
+    "IBB": "0",
+    "HBP": "0",
+    "SH": "0",
+    "SF": "0",
+    "GIDP": "0"
+  }
+]
+
+Testing Update by Template with matches in the data but with a duplicate value for primary key column:
+Update based on template {'teamID': 'BOS', 'yearID': '2012'} 
+and values {'yearID': '2011', 'stint': '1'} unsuccessful due to:
+ (1062, "Duplicate entry 'aceveal01-2011-1-BOS' for key 'PRIMARY'")
+Test successful as the update failed as it should
+
+Testing Update by Template without matches in the data:
+No match found for update based on the given template {'playerID': 'aardsda01', 'yearID': '2010', 'teamID': 'BOS', 'stint': '1'} 
+Test Successful. 0 rows updated
+
+Testing Update by Key with matches in the data:
+3 record(s) found before updates and 4 record(s) found after updates. Update on batting with keys ['alexama02', '2006', 'SDN', '1'] 
+and updates {'G': '11', 'H': '4', 'BB': '4'} was successful.
+ Data found based on updated values:
+ [
+  {
+    "playerID": "adamsri01",
+    "yearID": "1905",
+    "stint": "1",
+    "teamID": "WS1",
+    "lgID": "AL",
+    "G": "11",
+    "AB": "23",
+    "R": "1",
+    "H": "4",
+    "2B": "0",
+    "3B": "0",
+    "HR": "0",
+    "RBI": "0",
+    "SB": "0",
+    "CS": "",
+    "BB": "4",
+    "SO": "5",
+    "IBB": "",
+    "HBP": "0",
+    "SH": "0",
+    "SF": "",
+    "GIDP": ""
+  },
+  {
+    "playerID": "alexama02",
+    "yearID": "2006",
+    "stint": "1",
+    "teamID": "SDN",
+    "lgID": "NL",
+    "G": "11",
+    "AB": "34",
+    "R": "2",
+    "H": "4",
+    "2B": "1",
+    "3B": "1",
+    "HR": "0",
+    "RBI": "4",
+    "SB": "0",
+    "CS": "1",
+    "BB": "4",
+    "SO": "5",
+    "IBB": "2",
+    "HBP": "0",
+    "SH": "2",
+    "SF": "1",
+    "GIDP": "0"
+  },
+  {
+    "playerID": "blairca01",
+    "yearID": "2015",
+    "stint": "1",
+    "teamID": "OAK",
+    "lgID": "AL",
+    "G": "11",
+    "AB": "31",
+    "R": "3",
+    "H": "4",
+    "2B": "0",
+    "3B": "0",
+    "HR": "1",
+    "RBI": "3",
+    "SB": "0",
+    "CS": "0",
+    "BB": "4",
+    "SO": "18",
+    "IBB": "0",
+    "HBP": "0",
+    "SH": "0",
+    "SF": "0",
+    "GIDP": "1"
+  },
+  {
+    "playerID": "fletcsc01",
+    "yearID": "1982",
+    "stint": "1",
+    "teamID": "CHN",
+    "lgID": "NL",
+    "G": "11",
+    "AB": "24",
+    "R": "4",
+    "H": "4",
+    "2B": "0",
+    "3B": "0",
+    "HR": "0",
+    "RBI": "1",
+    "SB": "1",
+    "CS": "0",
+    "BB": "4",
+    "SO": "5",
+    "IBB": "0",
+    "HBP": "0",
+    "SH": "0",
+    "SF": "0",
+    "GIDP": "0"
+  }
+]
+
+Testing Update by Key with matches in the data but with a duplicate value for primary key column:
+Update based on keys ['alexama02', '2005', 'SDN', '1'] 
+and values {'playerID': 'adkinjo01', 'yearID': '2006'} unsuccessful due to:
+ (1062, "Duplicate entry 'adkinjo01-2006-1-SDN' for key 'PRIMARY'")
+Test successful as the update failed as it should
+
+Testing Update by Key without matches in the data:
+No match found for update based on the given keys ['aardsda01', '2010', 'BOS', '1'] 
+Test Successful. 0 rows updated
